@@ -1,25 +1,44 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import Auth from './components/Auth/Auth';
+import Home from './components/Main/Home';
+
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      sessionToken: ''
+    }
+  }
+
+  componentDidMount() {
+    if(localStorage.getItem('token') !== '') {
+      this.setSessionState(localStorage.getItem('token'));
+    }
+  }
+
+  setSessionState = (sessionToken) => {
+    localStorage.setItem('token', sessionToken);
+    this.setState({
+      sessionToken: sessionToken
+    })
+  }
+
+  logout = () => {
+    localStorage.setItem('token', '');
+    this.setState({
+      sessionToken: ''
+    })
+  }
+
   render() {
+
+    const protectedViews = !this.state.sessionToken ? <Auth setToken={this.setSessionState}/> : <Home logout={this.logout}/>
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        {protectedViews}
       </div>
     );
   }
