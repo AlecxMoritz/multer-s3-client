@@ -1,4 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const styles = theme => ({
+    button: {
+        margin: theme.spacing.unit,
+    },
+    input: {
+        display: 'none',
+    },
+});
+
 
 class PostImage extends React.Component {
     constructor(props) {
@@ -21,18 +34,18 @@ class PostImage extends React.Component {
         fetch(url, {
             method: 'POST',
             headers: {
-                'Authorization' : token
+                'Authorization': token
             },
             body: formData
         })
-        .then(response => response.json())
-        .then(data => {
-            this.props.fetchImages();
-            this.setState({
-                toggle: false
+            .then(response => response.json())
+            .then(data => {
+                this.props.fetchImages();
+                this.setState({
+                    toggle: false
+                })
             })
-        })
-        .catch(err => console.log("Error: " + err))
+            .catch(err => console.log("Error: " + err))
     }
 
     handleToggle = () => {
@@ -42,18 +55,35 @@ class PostImage extends React.Component {
     }
 
     render() {
-        const show = !this.state.toggle ? <div></div> 
-        : <div>
-            <input id="upload" name="file" type="file"/>
-            <button onClick={this.handleClick}>Post New Image</button>
-        </div>
+        const { classes } = this.props;
+        const show = !this.state.toggle ? <div></div>
+            : <div>
+                <input
+                    accept="image/*"
+                    className={classes.input}
+                    id="upload"
+                    multiple
+                    type="file"
+                />
+                <label htmlFor="upload">
+                    <Button variant="outlined" component="span" className={classes.button}>
+                        Upload
+                    </Button>
+                </label>
+            </div>
         return (
             <div>
-                <button onClick={this.handleToggle}>Post New Image</button>
+                <Button variant="outlined" color="primary" onClick={this.handleToggle} className={classes.button}>
+                    Post New
+                </Button>
                 {show}
             </div>
         )
     }
 }
 
-export default PostImage;
+PostImage.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(PostImage);
