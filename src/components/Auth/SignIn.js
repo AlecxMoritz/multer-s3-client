@@ -7,7 +7,6 @@ class SignIn extends React.Component {
             username: '',
             password: ''
         }
-
     }
 
     handleChange = (event) => {

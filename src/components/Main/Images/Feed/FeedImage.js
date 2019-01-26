@@ -1,5 +1,4 @@
 import React from 'react';
-import Radium from 'radium';
 import Upvote from '../Upvote';
 import Downvote from '../Downvote';
 

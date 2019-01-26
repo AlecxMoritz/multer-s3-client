@@ -2,8 +2,6 @@ import React from 'react';
 import DeleteImage from './DeleteImage';
 import UpdateImage from './UpdateImage';
 import Radium from 'radium';
-import Upvote from './Upvote';
-import Downvote from './Downvote';
 
 const styles = {
     wrapper: {

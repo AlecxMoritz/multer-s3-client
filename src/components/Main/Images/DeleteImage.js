@@ -31,8 +31,6 @@ class DeleteImage extends React.Component {
         .catch(err => console.log(err));
     }
 
-
-
     render() {
         return (
             <button onClick={this.handleClick}>Delete This Image</button>
