@@ -36,8 +36,6 @@ const Image = (props) => {
             <div style={styles.buttonRow}>
                 <DeleteImage imageId={image.id} fetchImages={props.fetchImages}/>
                 <UpdateImage imageId={image.id} fetchImages={props.fetchImages}/>
-                <Upvote upvote={props.upvote} imageId={image.id}/>
-                <Downvote downvote={props.downvote} imageId={image.id} />
                 <p>{image.votes}</p>
             </div>
         </div>

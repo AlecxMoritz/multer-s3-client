@@ -32,10 +32,38 @@ class Feed extends React.Component {
         .catch(err => console.log(err));
     }
 
+    downvote = (id) => {
+        let url = `http://localhost:3000/images/down/${id}`;
+
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization' : localStorage.getItem('token')
+            }
+        })
+        .then(() => this.fetchImages())
+        .catch(err => console.log(err))
+    }
+
+    upvote = (id) => {
+        let url = `http://localhost:3000/images/up/${id}`;
+
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization' : localStorage.getItem('token')
+            }
+        })
+        .then(() => this.fetchImages())
+        .catch(err => console.log(err))
+    }
+
     render() {
         const images = this.state.images;
         const displayImages = images.length > 0 ? images.map(image => {
-            return <FeedImage image={image} key={image.id} fetchImages={this.fetchImages} />
+            return <FeedImage image={image} key={image.id} fetchImages={this.fetchImages} upvote={this.upvote} downvote={this.downvote}/>
         })
         : <div></div>
 
