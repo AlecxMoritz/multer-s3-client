@@ -1,4 +1,15 @@
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const styles = theme => ({
+    button: {
+        margin: theme.spacing.unit,
+    },
+    input: {
+        display: 'none',
+    },
+});
 
 class DeleteImage extends React.Component {
     constructor(props) {
@@ -21,21 +32,25 @@ class DeleteImage extends React.Component {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization' : localStorage.getItem('token')
+                'Authorization': localStorage.getItem('token')
             }
         })
-        .then(response => response.json())
-        .then(data => {
-            this.props.fetchImages();
-        })
-        .catch(err => console.log(err));
+            .then(response => response.json())
+            .then(data => {
+                this.props.fetchImages();
+            })
+            .catch(err => console.log(err));
     }
 
     render() {
+        const { classes } = this.props;
         return (
-            <button onClick={this.handleClick}>Delete This Image</button>
+            // <button onClick={this.handleClick}>Delete This Image</button>
+            <Button variant="outlined" color="secondary" onClick={this.handleClick} className={classes.button}>
+                Delete Image
+            </Button>
         )
     }
 }
 
-export default DeleteImage;
+export default withStyles(styles)(DeleteImage);

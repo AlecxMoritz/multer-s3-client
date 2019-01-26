@@ -1,9 +1,23 @@
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const styles = theme => ({
+    button: {
+        margin: theme.spacing.unit,
+    },
+    input: {
+        display: 'none',
+    },
+});
 
 const Downvote = (props) => {
+    const { classes } = props;
     return (
-        <button onClick={() => props.downvote(props.imageId)}>Downvote</button>
+        <Button color="secondary" onClick={() => props.downvote(props.imageId)} className={classes.button}>
+            Downvote
+        </Button>
     )
 }
 
-export default Downvote;
+export default withStyles(styles)(Downvote);

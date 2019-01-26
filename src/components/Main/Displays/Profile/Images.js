@@ -40,7 +40,6 @@ class Images extends React.Component {
         .catch(err => console.log(err));
     }
 
-
     upvote = (id) => {
         let url = `http://localhost:3000/images/up/${id}`;
 
@@ -69,7 +68,6 @@ class Images extends React.Component {
         .catch(err => console.log(err))
     }
 
-
     render() {
         const images = this.state.userImgs;
         const displayImages = images.length > 0 ? images.map((image) => {
@@ -87,7 +85,6 @@ class Images extends React.Component {
             </div>
         )
     }
-
 }
 
 export default Images;

@@ -13,7 +13,7 @@ const styles = {
     card: {
         maxWidth: 600,
         height: 700,
-        margin: 15
+        margin: 'auto'
     },
     media: {
         height: 500,
@@ -25,20 +25,11 @@ const Image = (props) => {
     const { classes } = props;
     return (
         <div >
-            {/* <img src={`http://localhost:3000/images/${image.id}`} alt={image.path}></img>
-            <div >
-                <DeleteImage imageId={image.id} fetchImages={props.fetchImages} />
-                <UpdateImage imageId={image.id} fetchImages={props.fetchImages} />
-                <p>{image.votes}</p>
-            </div> */}
-
-
             <Card className={classes.card}>
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
                         image={`http://localhost:3000/images/${image.id}`}
-                    // title="Contemplative Reptile"
                     />
                     <CardContent>
                         <Typography component="p">

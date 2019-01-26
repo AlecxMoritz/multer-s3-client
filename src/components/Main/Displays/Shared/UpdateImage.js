@@ -1,4 +1,15 @@
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
+  input: {
+    display: 'none',
+  },
+});
 
 class UpdateImage extends React.Component {
     constructor(props) {
@@ -19,16 +30,16 @@ class UpdateImage extends React.Component {
         fetch(url, {
             method: 'PUT',
             headers: {
-                'Authorization' : token
+                'Authorization': token
             },
             body: formData
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log("before fetch");
-            this.props.fetchImages();
-        })
-        .catch(err => console.log(err));
+            .then(response => response.json())
+            .then(data => {
+                console.log("before fetch");
+                this.props.fetchImages();
+            })
+            .catch(err => console.log(err));
     }
 
     handleToggle = () => {
@@ -38,18 +49,34 @@ class UpdateImage extends React.Component {
     }
 
     render() {
-        const update = !this.state.toggle? <div></div> 
-        : <div>
-            <input id="updateUpload" type="file" />
-            <button onClick={this.handleClick}>Choose Image</button>
+        const { classes } = this.props;
+        const update = !this.state.toggle ? <div></div>
+            : <div>
+            <input
+                accept="image/*"
+                className={classes.input}
+                id="updateUpload"
+                multiple
+                type="file"
+            />
+            <label htmlFor="updateUpload">
+                <Button variant="outlined" component="span" className={classes.button}>
+                    Choose Image
+                </Button>
+            </label>
+            <Button variant="outlined" color="primary" onClick={this.handleClick} className={classes.button}>
+                Post
+            </Button>
         </div>
         return (
             <div>
-                <button onClick={this.handleToggle}>Update Image</button>
+                <Button variant="outlined" color="primary" onClick={this.handleToggle} className={classes.button}>
+                    Update Image
+                </Button>
                 {update}
             </div>
         )
     }
 }
 
-export default UpdateImage;
+export default withStyles(styles)(UpdateImage);

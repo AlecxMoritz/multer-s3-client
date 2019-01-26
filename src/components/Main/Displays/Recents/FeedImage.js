@@ -13,7 +13,7 @@ const styles = {
     card: {
         maxWidth: 600,
         height: 700,
-        margin: 15
+        margin: 'auto'
     },
     media: {
         height: 500,
@@ -25,19 +25,11 @@ const FeedImage = (props) => {
     const image = props.image;
     return (
         <div>
-            {/* <img style={styles.image} src={`http://localhost:3000/images/${image.id}`} alt={image.path}></img>
-            <div style={styles.buttonRow}>
-                
-            </div> */}
-
-
-
             <Card className={classes.card}>
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
                         image={`http://localhost:3000/images/${image.id}`}
-                    // title="Contemplative Reptile"
                     />
                     <CardContent>
                         <Typography component="p">

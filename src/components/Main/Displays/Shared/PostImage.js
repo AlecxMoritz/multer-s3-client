@@ -12,7 +12,6 @@ const styles = theme => ({
     },
 });
 
-
 class PostImage extends React.Component {
     constructor(props) {
         super(props);
@@ -67,14 +66,17 @@ class PostImage extends React.Component {
                 />
                 <label htmlFor="upload">
                     <Button variant="outlined" component="span" className={classes.button}>
-                        Upload
+                        Choose Image
                     </Button>
                 </label>
+                <Button variant="outlined" color="primary" onClick={this.handleClick} className={classes.button}>
+                    Post
+                </Button>
             </div>
         return (
             <div>
                 <Button variant="outlined" color="primary" onClick={this.handleToggle} className={classes.button}>
-                    Post New
+                    New Image
                 </Button>
                 {show}
             </div>
