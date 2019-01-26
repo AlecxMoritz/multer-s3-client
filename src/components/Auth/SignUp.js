@@ -21,7 +21,8 @@ class SignUp extends React.Component {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            email: ''
         }
     }
     
@@ -54,13 +55,30 @@ class SignUp extends React.Component {
                 <h1>Sign Up</h1>
                 <TextField
                     onChange={this.handleChange}
+                    name="email"
+                    id="outlined-full-width"
+                    label="Email"
+                    style={{ margin: 8 }}
+                    placeholder="memelicious@sassycats.io"
+                    required
+                    type="email"
+                    fullWidth
+                    margin="normal"
+                    variant="outlined"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+                <TextField
+                    onChange={this.handleChange}
                     name="username"
                     id="outlined-full-width"
                     label="Username"
                     style={{ margin: 8 }}
                     placeholder="cssIsAwesome42"
-                    // helperText="Full width!"
+                    type="text"
                     fullWidth
+                    required
                     margin="normal"
                     variant="outlined"
                     InputLabelProps={{
@@ -74,8 +92,8 @@ class SignUp extends React.Component {
                     label="Password"
                     style={{ margin: 8 }}
                     placeholder="LetMeIn!!"
-                    // helperText="Full width!"
                     fullWidth
+                    required
                     type="password"
                     margin="normal"
                     variant="outlined"

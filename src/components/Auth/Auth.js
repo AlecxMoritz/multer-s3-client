@@ -11,7 +11,7 @@ const styles = theme => ({
         width: '50%',
         margin: 'auto',
         textAlign: 'center',
-        marginTop: '25vh'
+        marginTop: '20vh'
     },
 
     root: {
