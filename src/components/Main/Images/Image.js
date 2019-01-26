@@ -2,18 +2,29 @@ import React from 'react';
 import DeleteImage from './DeleteImage';
 import UpdateImage from './UpdateImage';
 import Radium from 'radium';
+import Upvote from './Upvote';
+import Downvote from './Downvote';
 
 const styles = {
+    wrapper: {
+        width: '40%',
+        margin: 'auto',
+        // backgroundColor: 'blue',
+        display: 'flex'
+    },
+
     image: {
-        backgroundColor: 'black',
+        // float: 'right',
+        marginLeft: '3em',
+        position: 'relative',
         color: 'white',
-        minWidth: '40vw',
-        minHeight: '10vh',
-        padding: '2em'
+        padding: '2em',
+        maxHeight: '50vh',
+        maxWidth: '50vw'
     },
 
     buttonRow: {
-        width: '100%',
+        width: '40%',
         height: '4em',
         padding: 'auto'
     }
@@ -22,11 +33,14 @@ const styles = {
 const Image = (props) => {
     const image = props.image;
     return (
-        <div style={styles.image}>
-            <img src={`http://localhost:3000/images/${image.id}`} alt={image.path}></img>
+        <div style={styles.wrapper}>
+            <img style={styles.image} src={`http://localhost:3000/images/${image.id}`} alt={image.path}></img>
             <div style={styles.buttonRow}>
                 <DeleteImage imageId={image.id} fetchImages={props.fetchImages}/>
                 <UpdateImage imageId={image.id} fetchImages={props.fetchImages}/>
+                <Upvote upvote={props.upvote} imageId={image.id}/>
+                <Downvote downvote={props.downvote} imageId={image.id} />
+                <p>{image.votes}</p>
             </div>
         </div>
     )

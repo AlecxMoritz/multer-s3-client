@@ -26,7 +26,6 @@ class DeleteImage extends React.Component {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             this.props.fetchImages();
         })
         .catch(err => console.log(err));
