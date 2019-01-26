@@ -1,6 +1,7 @@
 import React from 'react';
 import PostImage from '../Shared/PostImage';
 import Image from './Image';  
+import UserDisplay from './UserDisplay';
 
 class Images extends React.Component {
     constructor(props) {
@@ -71,13 +72,14 @@ class Images extends React.Component {
     render() {
         const images = this.state.userImgs;
         const displayImages = images.length > 0 ? images.map((image) => {
-            return <Image image={image} key={image.id} fetchImages={this.fetchImages} upvote={this.upvote} downvote={this.downvote}/>
+            return <Image username={image.posted_by} image={image} key={image.id} fetchImages={this.fetchImages} upvote={this.upvote} downvote={this.downvote}/>
         })
         : <div>
             <p>You don't have any images!</p>
         </div>
         return (
             <div>
+                <UserDisplay />
                 <PostImage fetchImages={this.fetchImages}/>
                 <div>
                     {displayImages}

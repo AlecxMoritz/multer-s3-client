@@ -33,7 +33,7 @@ const FeedImage = (props) => {
                     />
                     <CardContent>
                         <Typography component="p">
-
+                            <h4>{image.posted_by}</h4>
                             <Upvote upvote={props.upvote} imageId={image.id} />
                             <Downvote downvote={props.downvote} imageId={image.id} />
                             <p>{image.votes}</p>

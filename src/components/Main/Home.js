@@ -161,7 +161,7 @@ class Home extends React.Component {
                             <Link className={classes.link} to="/">
                                 <ListItem button>
                                     <ListItemIcon><PhotoIcon /></ListItemIcon>
-                                    <ListItemText primary={"Feed"} />
+                                    <ListItemText primary={"Recent"} />
                                 </ListItem>
                             </Link>
                         </List>

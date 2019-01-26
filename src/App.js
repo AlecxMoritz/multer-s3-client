@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   logout = () => {
-    localStorage.setItem('token', '');
+    localStorage.clear();
     this.setState({
       sessionToken: ''
     })

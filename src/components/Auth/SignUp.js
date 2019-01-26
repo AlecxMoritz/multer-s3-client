@@ -22,7 +22,7 @@ class SignUp extends React.Component {
         this.state = {
             username: '',
             password: '',
-            email: ''
+            email: '',
         }
     }
     
@@ -30,6 +30,10 @@ class SignUp extends React.Component {
         this.setState({
             [event.target.name] : event.target.value
         })
+    }
+
+    validateForm = () => {
+        // check 
     }
 
     handleSubmit = (event) => {
@@ -46,6 +50,11 @@ class SignUp extends React.Component {
         .then(data => {
             this.props.setToken(data.sessionToken)
         })
+        .catch(err => {
+            this.setState({
+                formErrors: 'Please fill out form completely'
+            })
+        })
     }
 
     render() {
@@ -53,10 +62,11 @@ class SignUp extends React.Component {
         return (
             <div className={classes.container}>
                 <h1>Sign Up</h1>
+                <p>All fields required</p>
                 <TextField
                     onChange={this.handleChange}
                     name="email"
-                    id="outlined-full-width"
+                    id="email"
                     label="Email"
                     style={{ margin: 8 }}
                     placeholder="memelicious@sassycats.io"
@@ -72,7 +82,7 @@ class SignUp extends React.Component {
                 <TextField
                     onChange={this.handleChange}
                     name="username"
-                    id="outlined-full-width"
+                    id="username"
                     label="Username"
                     style={{ margin: 8 }}
                     placeholder="cssIsAwesome42"
@@ -88,7 +98,7 @@ class SignUp extends React.Component {
                 <TextField
                     onChange={this.handleChange}
                     name="password"
-                    id="outlined-full-width"
+                    id="password"
                     label="Password"
                     style={{ margin: 8 }}
                     placeholder="LetMeIn!!"

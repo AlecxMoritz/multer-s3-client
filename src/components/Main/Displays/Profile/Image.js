@@ -16,7 +16,7 @@ const styles = {
         margin: 'auto'
     },
     media: {
-        height: 500,
+        height: 400,
     },
 };
 
@@ -33,7 +33,6 @@ const Image = (props) => {
                     />
                     <CardContent>
                         <Typography component="p">
-
                             <DeleteImage imageId={image.id} fetchImages={props.fetchImages} />
                             <UpdateImage imageId={image.id} fetchImages={props.fetchImages} />
                             <p>{image.votes}</p>
