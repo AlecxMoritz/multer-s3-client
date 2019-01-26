@@ -13,7 +13,18 @@ class Feed extends React.Component {
     }
 
     fetchImages = () => {
+        let url = 'http://localhost:3000/images/all';
 
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization' : localStorage.getItem('token')
+            }
+        })
+        .then(response => response.json())
+        .then(images => console.log(images))
+        .catch(err => console.log(err));
     }
 
     render() {
