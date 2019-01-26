@@ -75,10 +75,11 @@ class Images extends React.Component {
         const displayImages = images.length > 0 ? images.map((image) => {
             return <Image image={image} key={image.id} fetchImages={this.fetchImages} upvote={this.upvote} downvote={this.downvote}/>
         })
-        : <div></div>
+        : <div>
+            <p>You don't have any images!</p>
+        </div>
         return (
             <div>
-                <h2>Welcome to Images</h2>
                 <PostImage fetchImages={this.fetchImages}/>
                 <div>
                     {displayImages}

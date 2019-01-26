@@ -3,6 +3,7 @@ import './App.css';
 
 import Auth from './components/Auth/Auth';
 import Home from './components/Main/Home';
+import Appbar from './components/Main/Appbar';
 
 class App extends Component {
   constructor() {
@@ -38,6 +39,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <Appbar />
         {protectedViews}
       </div>
     );

@@ -1,4 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
+
+
+const styles = theme => ({
+    button: {
+        margin: theme.spacing.unit,
+    },
+    input: {
+        display: 'none',
+    },
+
+    container: {
+        width: '45vw'
+    }
+});
 
 class SignIn extends React.Component {
     constructor() {
@@ -11,7 +32,7 @@ class SignIn extends React.Component {
 
     handleChange = (event) => {
         this.setState({
-            [event.target.name] : event.target.value
+            [event.target.name]: event.target.value
         })
     }
 
@@ -22,27 +43,57 @@ class SignIn extends React.Component {
             method: 'POST',
             body: JSON.stringify({ user: this.state }),
             headers: {
-                'Content-Type' : 'application/json'
+                'Content-Type': 'application/json'
             }
         })
-        .then(response => response.json())
-        .then(data => {
-            this.props.setToken(data.sessionToken)
-        })
+            .then(response => response.json())
+            .then(data => {
+                this.props.setToken(data.sessionToken)
+            })
     }
 
     render() {
+        const { classes } = this.props
         return (
-            <div>
-                <h2>Sign In</h2>
-                <label htmlFor="SIname" >Username: </label>
-                <input id="SIname" type="text" name="username" onChange={this.handleChange} />
-                <label htmlFor="SIPass" >Password: </label>
-                <input id="SIPass" type="password" name="password" onChange={this.handleChange} />
-                <button onClick={this.handleSubmit}>Sign In</button>
+            <div className={classes.container}>
+                <h1>Sign In</h1>
+                <TextField
+                    onChange={this.handleChange}
+                    name="username"
+                    id="outlined-full-width"
+                    label="Username"
+                    style={{ margin: 8 }}
+                    placeholder="cssIsAwesome42"
+                    // helperText="Full width!"
+                    fullWidth
+                    margin="normal"
+                    variant="outlined"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+                <TextField
+                    onChange={this.handleChange}
+                    name="password"
+                    id="outlined-full-width"
+                    label="Password"
+                    style={{ margin: 8 }}
+                    placeholder="LetMeIn!!"
+                    // helperText="Full width!"
+                    fullWidth
+                    type="password"
+                    margin="normal"
+                    variant="outlined"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+                <Button onClick={this.handleSubmit} variant="outlined" className={classes.button}>
+                    Sign In
+                </Button>
             </div>
         )
     }
 }
 
-export default SignIn;
+export default withStyles(styles)(SignIn);

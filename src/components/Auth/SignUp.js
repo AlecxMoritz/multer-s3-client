@@ -1,8 +1,25 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const styles = theme => ({
+    button: {
+        margin: theme.spacing.unit,
+    },
+    input: {
+        display: 'none',
+    },
+
+    container: {
+        width: '45vw'
+    }
+});
 
 class SignUp extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             username: '',
             password: ''
@@ -32,17 +49,48 @@ class SignUp extends React.Component {
     }
 
     render() {
+        const { classes } = this.props;
         return (
-            <div>
-                <h2>Sign Up</h2>
-                <label htmlFor="SUname" >Username: </label>
-                <input id="SUname" type="text" name="username" onChange={this.handleChange} />
-                <label htmlFor="SUpass" >Password: </label>
-                <input id="SUpass" type="password" name="password" onChange={this.handleChange} />
-                <button onClick={this.handleSubmit}>Sign In</button>
+            <div className={classes.container}>
+                <h1>Sign Up</h1>
+                <TextField
+                    onChange={this.handleChange}
+                    name="username"
+                    id="outlined-full-width"
+                    label="Username"
+                    style={{ margin: 8 }}
+                    placeholder="cssIsAwesome42"
+                    // helperText="Full width!"
+                    fullWidth
+                    margin="normal"
+                    variant="outlined"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+                <TextField
+                    onChange={this.handleChange}
+                    name="password"
+                    id="outlined-full-width"
+                    label="Password"
+                    style={{ margin: 8 }}
+                    placeholder="LetMeIn!!"
+                    // helperText="Full width!"
+                    fullWidth
+                    type="password"
+                    margin="normal"
+                    variant="outlined"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                />
+                {/* <button onClick={this.handleSubmit}>Sign In</button> */}
+                <Button onClick={this.handleSubmit} variant="outlined" className={classes.button}>
+                    Sign Up
+                </Button>
             </div>
         )
     }
 }
 
-export default SignUp;
+export default withStyles(styles)(SignUp);
