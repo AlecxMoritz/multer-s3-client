@@ -20,15 +20,21 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-
+import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
+import PersonIcon from '@material-ui/icons/Person';
+import ClearIcon from '@material-ui/icons/Clear';
+import PhotoIcon from '@material-ui/icons/Photo';
 const drawerWidth = 240;
 
 const styles = theme => ({
     root: {
         display: 'flex',
     },
+    
+    link: {
+        textDecoration: 'none'
+    },
+
     appBar: {
         transition: theme.transitions.create(['margin', 'width'], {
             easing: theme.transitions.easing.sharp,
@@ -122,7 +128,7 @@ class Home extends React.Component {
                                 <MenuIcon />
                             </IconButton>
                             <Typography variant="h6" color="inherit" noWrap>
-                                IMAGES
+                                ElevenFifty Meme Club
             </Typography>
                         </Toolbar>
                     </AppBar>
@@ -143,18 +149,18 @@ class Home extends React.Component {
                         <Divider />
                         <List>
                             <ListItem button onClick={this.props.logout}>
-                                <ListItemIcon><InboxIcon /></ListItemIcon>
+                                <ListItemIcon><ClearIcon /></ListItemIcon>
                                 <ListItemText primary={"Logout"} />
                             </ListItem>
-                            <Link to="/profile">
+                            <Link className={classes.link} to="/profile">
                                 <ListItem button>
-                                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                                    <ListItemIcon><PersonIcon /></ListItemIcon>
                                     <ListItemText primary={"Profile"} />
                                 </ListItem>
                             </Link>
-                            <Link to="/">
+                            <Link className={classes.link} to="/">
                                 <ListItem button>
-                                    <ListItemIcon><InboxIcon /></ListItemIcon>
+                                    <ListItemIcon><PhotoIcon /></ListItemIcon>
                                     <ListItemText primary={"Feed"} />
                                 </ListItem>
                             </Link>
@@ -162,7 +168,7 @@ class Home extends React.Component {
                         <Divider />
                         <List>
                             <ListItem button>
-                                <ListItemIcon><InboxIcon /></ListItemIcon>
+                                <ListItemIcon><AddAPhotoIcon /></ListItemIcon>
                                 <ListItemText primary={"Post New"} />
                             </ListItem>
                         </List>

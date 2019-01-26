@@ -1,43 +1,61 @@
 import React from 'react';
 import DeleteImage from './DeleteImage';
 import UpdateImage from './UpdateImage';
-import Radium from 'radium';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
 
 const styles = {
-    wrapper: {
-        width: '40%',
-        margin: 'auto',
-        display: 'flex'
+    card: {
+        maxWidth: 600,
+        height: 700,
+        margin: 15
     },
-
-    image: {
-        marginLeft: '3em',
-        position: 'relative',
-        color: 'white',
-        padding: '2em',
-        maxHeight: '50vh',
-        maxWidth: '50vw'
+    media: {
+        height: 500,
     },
-
-    buttonRow: {
-        width: '40%',
-        height: '4em',
-        padding: 'auto'
-    }
-}
+};
 
 const Image = (props) => {
     const image = props.image;
+    const { classes } = props;
     return (
-        <div style={styles.wrapper}>
-            <img style={styles.image} src={`http://localhost:3000/images/${image.id}`} alt={image.path}></img>
-            <div style={styles.buttonRow}>
-                <DeleteImage imageId={image.id} fetchImages={props.fetchImages}/>
-                <UpdateImage imageId={image.id} fetchImages={props.fetchImages}/>
+        <div >
+            {/* <img src={`http://localhost:3000/images/${image.id}`} alt={image.path}></img>
+            <div >
+                <DeleteImage imageId={image.id} fetchImages={props.fetchImages} />
+                <UpdateImage imageId={image.id} fetchImages={props.fetchImages} />
                 <p>{image.votes}</p>
-            </div>
+            </div> */}
+
+
+            <Card className={classes.card}>
+                <CardActionArea>
+                    <CardMedia
+                        className={classes.media}
+                        image={`http://localhost:3000/images/${image.id}`}
+                    // title="Contemplative Reptile"
+                    />
+                    <CardContent>
+                        <Typography component="p">
+
+                            <DeleteImage imageId={image.id} fetchImages={props.fetchImages} />
+                            <UpdateImage imageId={image.id} fetchImages={props.fetchImages} />
+                            <p>{image.votes}</p>
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
         </div>
     )
 }
 
-export default Radium(Image);
+Image.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Image);

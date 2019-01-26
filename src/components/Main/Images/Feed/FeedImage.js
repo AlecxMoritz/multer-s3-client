@@ -1,42 +1,60 @@
 import React from 'react';
 import Upvote from '../Upvote';
 import Downvote from '../Downvote';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
 
 const styles = {
-    wrapper: {
-        width: '40%',
-        margin: 'auto',
-        display: 'flex'
+    card: {
+        maxWidth: 600,
+        height: 700,
+        margin: 15
     },
-
-    image: {
-        marginLeft: '3em',
-        position: 'relative',
-        color: 'white',
-        padding: '2em',
-        maxHeight: '50vh',
-        maxWidth: '50vw'
+    media: {
+        height: 500,
     },
-
-    buttonRow: {
-        width: '40%',
-        height: '4em',
-        padding: 'auto'
-    }
-}
+};
 
 const FeedImage = (props) => {
+    const { classes } = props;
     const image = props.image;
     return (
-        <div style={styles.wrapper}>
-            <img style={styles.image} src={`http://localhost:3000/images/${image.id}`} alt={image.path}></img>
+        <div>
+            {/* <img style={styles.image} src={`http://localhost:3000/images/${image.id}`} alt={image.path}></img>
             <div style={styles.buttonRow}>
-                <Upvote upvote={props.upvote} imageId={image.id}/>
-                <Downvote downvote={props.downvote} imageId={image.id} />
-                <p>{image.votes}</p>
-            </div>
+                
+            </div> */}
+
+
+
+            <Card className={classes.card}>
+                <CardActionArea>
+                    <CardMedia
+                        className={classes.media}
+                        image={`http://localhost:3000/images/${image.id}`}
+                    // title="Contemplative Reptile"
+                    />
+                    <CardContent>
+                        <Typography component="p">
+
+                            <Upvote upvote={props.upvote} imageId={image.id} />
+                            <Downvote downvote={props.downvote} imageId={image.id} />
+                            <p>{image.votes}</p>
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+            </Card>
         </div>
     )
 }
 
-export default FeedImage;
+FeedImage.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(FeedImage);
