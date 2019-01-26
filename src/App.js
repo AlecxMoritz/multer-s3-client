@@ -38,7 +38,7 @@ class App extends Component {
     const protectedViews = !this.state.sessionToken ? <Auth setToken={this.setSessionState}/> : <Home logout={this.logout}/>
 
     return (
-      <div className="App">
+      <div >
         <Appbar />
         {protectedViews}
       </div>
