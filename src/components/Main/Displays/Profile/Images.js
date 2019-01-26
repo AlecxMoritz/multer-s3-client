@@ -1,5 +1,5 @@
 import React from 'react';
-import PostImage from './PostImage';
+import PostImage from '../Shared/PostImage';
 import Image from './Image';  
 
 class Images extends React.Component {

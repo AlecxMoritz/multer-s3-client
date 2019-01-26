@@ -1,6 +1,6 @@
 import React from 'react';
-import Images from './Images/Images';
-import Feed from './Images/Feed/Feed';
+import Images from './Displays/Profile/Images';
+import Feed from './Displays/Recents/Feed';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 
 import PropTypes from 'prop-types';

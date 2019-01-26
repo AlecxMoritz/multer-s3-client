@@ -1,6 +1,6 @@
 import React from 'react';
-import Upvote from '../Upvote';
-import Downvote from '../Downvote';
+import Upvote from '../Shared/Upvote';
+import Downvote from '../Shared/Downvote';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';

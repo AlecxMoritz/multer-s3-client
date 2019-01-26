@@ -1,6 +1,6 @@
 import React from 'react';
-import DeleteImage from './DeleteImage';
-import UpdateImage from './UpdateImage';
+import DeleteImage from '../Shared/DeleteImage';
+import UpdateImage from '../Shared/UpdateImage';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
