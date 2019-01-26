@@ -1,4 +1,5 @@
 import React from 'react';
+import FeedImage from './FeedImage';
 
 class Feed extends React.Component {
     constructor(props) {
@@ -23,14 +24,24 @@ class Feed extends React.Component {
             }
         })
         .then(response => response.json())
-        .then(images => console.log(images))
+        .then(images => {
+            this.setState({
+                images: images.images
+            })
+        })
         .catch(err => console.log(err));
     }
 
     render() {
+        const images = this.state.images;
+        const displayImages = images.length > 0 ? images.map(image => {
+            return <FeedImage image={image} key={image.id} fetchImages={this.fetchImages} />
+        })
+        : <div></div>
+
         return (
             <div>
-                <h2>Hello Feed</h2>
+                {displayImages}
             </div>
         )
     }
