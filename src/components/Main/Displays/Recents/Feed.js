@@ -15,7 +15,7 @@ class Feed extends React.Component {
     }
 
     fetchImages = () => {
-        let url = 'http://localhost:3000/images/all';
+        let url = APIURL + '/images/all';
 
         fetch(url, {
             method: 'GET',
@@ -34,7 +34,7 @@ class Feed extends React.Component {
     }
 
     downvote = (id) => {
-        let url = `http://localhost:3000/images/down/${id}`;
+        let url = APIURL + `/images/down/${id}`;
 
         fetch(url, {
             method: 'PUT',
