@@ -5,7 +5,7 @@ switch(window.location.hostname) {
         APIURL = 'http://localhost:3000';
         break;
     
-    case 'am-image-client.herokuapp.con':
+    case 'am-image-client.herokuapp.com':
         APIURL = 'https://am-image-db.herokuapp.com';
         break;
 }
