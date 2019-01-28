@@ -6,7 +6,7 @@ switch(window.location.hostname) {
         break;
     
     case 'am-image-client.herokuapp.con':
-        APIURL = 'https://am-image-db.herokuapp.com/';
+        APIURL = 'https://am-image-db.herokuapp.com';
         break;
 }
 
