@@ -128,7 +128,7 @@ class Home extends React.Component {
                                 <MenuIcon />
                             </IconButton>
                             <Typography variant="h6" color="inherit" noWrap>
-                                ElevenFifty Meme Club
+                            Memelicious
             </Typography>
                         </Toolbar>
                     </AppBar>

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import APIURL from '../../../helpers/environment';
 
 const styles = theme => ({
     button: {
@@ -27,7 +28,7 @@ class PostImage extends React.Component {
         let formData = new FormData();
         formData.append('image', upload.files[0]);
 
-        let url = 'http://localhost:3000/images/upload'
+        let url = APIURL + '/images/upload'
         let token = localStorage.getItem('token');
         console.log(token)
         fetch(url, {

@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import APIURL from '../../../helpers/environment';
 
 function getModalStyle() {
     const top = 50
@@ -58,7 +59,7 @@ class UpdateProfile extends React.Component {
     }
 
     handleClick = () => {
-        let url = "http://localhost:3000/users/profile";
+        let url = APIURL + "/users/profile";
 
         fetch(url, {
             method: 'PUT',

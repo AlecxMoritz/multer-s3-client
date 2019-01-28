@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-
+import APIURL from '../helpers/environment';
 
 
 const styles = theme => ({
@@ -34,7 +34,7 @@ class SignIn extends React.Component {
     }
 
     handleSubmit = (event) => {
-        let url = 'http://localhost:3000/users/signin'
+        let url = APIURL + '/users/signin';
 
         fetch(url, {
             method: 'POST',

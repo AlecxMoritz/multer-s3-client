@@ -1,6 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import APIURL from '../../../helpers/environment';
 
 const styles = theme => ({
   button: {
@@ -22,7 +23,7 @@ class UpdateImage extends React.Component {
 
     handleClick = () => {
         let upload = document.getElementById('updateUpload')
-        let url = `http://localhost:3000/images/${this.state.imageId}`;
+        let url = APIURL + `/images/${this.state.imageId}`;
         let token = localStorage.getItem('token');
         let formData = new FormData();
         formData.append('image', upload.files[0])

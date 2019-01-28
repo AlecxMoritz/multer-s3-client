@@ -1,6 +1,6 @@
 import React from 'react';
 import UpdateProfile from './UpdateProfile';
-
+import APIURL from '../../../helpers/environment';
 class UserDisplay extends React.Component {
     constructor(props) {
         super(props);
@@ -14,7 +14,7 @@ class UserDisplay extends React.Component {
     }
 
     fetchUserInfo = () => {
-        let url = 'http://localhost:3000/users/me';
+        let url = APIURL + '/users/me';
 
         fetch(url, {
             headers: {

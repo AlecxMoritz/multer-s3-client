@@ -19,7 +19,7 @@ function Appbar(props) {
       <AppBar position="static" color="primary">
         <Toolbar>
           <Typography variant="h6" color="inherit">
-            ElevenFifty Meme Club
+            Memelicious
           </Typography>
         </Toolbar>
       </AppBar>

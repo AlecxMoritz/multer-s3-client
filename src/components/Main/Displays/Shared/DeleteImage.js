@@ -1,6 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import APIURL from '../../../helpers/environment';
 
 const styles = theme => ({
     button: {
@@ -26,7 +27,7 @@ class DeleteImage extends React.Component {
     }
 
     handleClick = () => {
-        let url = `http://localhost:3000/images/${this.state.imageId}`;
+        let url = APIURL + `/images/${this.state.imageId}`;
 
         fetch(url, {
             method: 'DELETE',

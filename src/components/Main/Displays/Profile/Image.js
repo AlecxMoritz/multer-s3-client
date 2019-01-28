@@ -8,6 +8,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import APIURL from '../../../helpers/environment';
 
 const styles = {
     card: {
@@ -29,7 +30,7 @@ const Image = (props) => {
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
-                        image={`http://localhost:3000/images/${image.id}`}
+                        image={`${APIURL}/images/${image.id}`}
                     />
                     <CardContent>
                         <Typography component="p">

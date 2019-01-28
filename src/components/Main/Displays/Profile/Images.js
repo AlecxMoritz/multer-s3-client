@@ -2,6 +2,7 @@ import React from 'react';
 import PostImage from '../Shared/PostImage';
 import Image from './Image';  
 import UserDisplay from './UserDisplay';
+import APIURL from '../../../helpers/environment';
 
 class Images extends React.Component {
     constructor(props) {
@@ -22,7 +23,7 @@ class Images extends React.Component {
     }
 
     fetchImages = () => {
-        let url = 'http://localhost:3000/images/mine';
+        let url = APIURL + '/images/mine';
         let token = localStorage.getItem('token');
 
         fetch(url, {
@@ -56,7 +57,7 @@ class Images extends React.Component {
     }
 
     downvote = (id) => {
-        let url = `http://localhost:3000/images/down/${id}`;
+        let url = APIURL +  `/images/down/${id}`;
 
         fetch(url, {
             method: 'PUT',

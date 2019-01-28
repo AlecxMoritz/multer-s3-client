@@ -1,5 +1,6 @@
 import React from 'react';
 import FeedImage from './FeedImage';
+import APIURL from '../../../helpers/environment';
 
 class Feed extends React.Component {
     constructor(props) {
@@ -47,7 +48,7 @@ class Feed extends React.Component {
     }
 
     upvote = (id) => {
-        let url = `http://localhost:3000/images/up/${id}`;
+        let url = APIURL + `/images/up/${id}`;
 
         fetch(url, {
             method: 'PUT',
