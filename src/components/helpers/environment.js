@@ -2,11 +2,11 @@ let APIURL = '';
 
 switch(window.location.hostname) {
     case 'localhost' || '127.0.0.1':
-        APIURL = 'http://localhost:3000';
+        APIURL = 'http://localhost:8080';
         break;
     
-    case 'am-image-client.herokuapp.com':
-        APIURL = 'https://am-image-db.herokuapp.com';
+    case 'am-s3-image-client.herokuapp.com':
+        APIURL = 'https://am-s3-image.herokuapp.com';
         break;
 }
 

@@ -30,7 +30,7 @@ const Image = (props) => {
                 <CardActionArea>
                     <CardMedia
                         className={classes.media}
-                        image={`${APIURL}/images/${image.id}`}
+                        image={image.location}
                     />
                     <CardContent>
                         <Typography component="p">
